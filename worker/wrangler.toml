@@ -1,0 +1,9 @@
+name = "portfolio-assistant"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[ai]
+binding = "AI"
+
+[vars]
+ALLOWED_ORIGIN = "https://YOUR-USERNAME.github.io"

@@ -1,0 +1,16 @@
+{
+  "name": "ghl-automation",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Drive the GoHighLevel web UI with Playwright to build draft workflows.",
+  "type": "commonjs",
+  "scripts": {
+    "setup": "npm install && npx playwright install chromium",
+    "login": "node --env-file-if-exists=.env save-session.js",
+    "check": "node --env-file-if-exists=.env 01-readonly-check.js",
+    "build": "node --env-file-if-exists=.env 02-build-workflow.js specs/wp-01-lead-intake.json"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

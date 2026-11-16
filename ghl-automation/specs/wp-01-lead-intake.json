@@ -1,0 +1,46 @@
+{
+  "name": "WP | 01 Lead intake",
+  "allowReEntry": false,
+  "trigger": {
+    "type": "Form Submitted",
+    "filters": [
+      { "label": "Form", "value": "REPLACE_WITH_FORM_NAME", "kind": "select" }
+    ]
+  },
+  "actions": [
+    {
+      "type": "If / Else",
+      "note": "Guard: skip contacts that already ran intake",
+      "branchName": "Already processed",
+      "condition": { "field": "Tag", "operator": "Includes", "value": "wp-intake-done" },
+      "manual": true
+    },
+    {
+      "type": "Add Contact Tag",
+      "fields": [{ "label": "Tags", "value": "wp-lead-new", "kind": "tag" }],
+      "expect": ["wp-lead-new"]
+    },
+    {
+      "type": "Create Or Update Opportunity",
+      "fields": [
+        { "label": "Pipeline", "value": "REPLACE_WITH_PIPELINE", "kind": "select" },
+        { "label": "Stage", "value": "New Lead", "kind": "select" }
+      ],
+      "expect": ["New Lead"]
+    },
+    {
+      "type": "Send Email",
+      "note": "Draft only. Nothing sends while the workflow is Draft.",
+      "fields": [
+        { "label": "Subject", "value": "Thanks {{contact.first_name}}, we got your details", "kind": "text" }
+      ],
+      "expect": ["we got your details"]
+    },
+    {
+      "type": "Add Contact Tag",
+      "note": "Sent-tag. Paired with the If/Else guard so intake runs once per contact.",
+      "fields": [{ "label": "Tags", "value": "wp-intake-done", "kind": "tag" }],
+      "expect": ["wp-intake-done"]
+    }
+  ]
+}

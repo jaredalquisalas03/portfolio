@@ -1,0 +1,7 @@
+# GHL automation: sessions, screenshots and logs can hold secrets or client data
+ghl-session.json
+**/ghl-session*.json
+ghl-automation/screenshots/
+ghl-automation/logs/
+ghl-automation/.env
+node_modules/

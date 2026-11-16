@@ -1,0 +1,73 @@
+# Runs the GHL Playwright scripts on GitHub. Manual start only.
+# Needs repo secrets: GHL_SESSION_JSON, GHL_LOCATION_ID, GHL_EXPECTED_ACCOUNT
+# Keep this repo PRIVATE: screenshots and logs can show client data.
+name: GHL automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "What to run"
+        type: choice
+        options:
+          - check (read-only)
+          - build specs/wp-00-test-tag.json
+          - build specs/wp-01-lead-intake.json
+        default: check (read-only)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ghl-ui
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+      GHL_EXPECTED_ACCOUNT: ${{ secrets.GHL_EXPECTED_ACCOUNT }}
+      HEADLESS: "1"
+      SLOWMO: "200"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright + Chromium
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Write session file (never printed)
+        env:
+          GHL_SESSION_JSON: ${{ secrets.GHL_SESSION_JSON }}
+        run: |
+          if [ -z "$GHL_SESSION_JSON" ]; then echo "Missing secret GHL_SESSION_JSON"; exit 1; fi
+          printf '%s' "$GHL_SESSION_JSON" > ghl-session.json
+          node -e "JSON.parse(require('fs').readFileSync('ghl-session.json','utf8'))" || { echo "GHL_SESSION_JSON is not valid JSON"; exit 1; }
+
+      - name: Run
+        run: |
+          case "${{ inputs.task }}" in
+            check*) node 01-readonly-check.js ;;
+            build*) node 02-build-workflow.js "$(echo '${{ inputs.task }}' | cut -d' ' -f2)" ;;
+          esac
+
+      - name: Upload screenshots and audit log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghl-run-${{ github.run_number }}
+          path: |
+            screenshots/
+            logs/
+          retention-days: 3
+
+      - name: Delete session file
+        if: always()
+        run: rm -f ghl-session.json

@@ -65,7 +65,8 @@ async function assertLoggedIn(page) {
 // Confirm the header shows the expected sub-account before touching anything.
 async function assertAccount(page) {
   await page.waitForLoadState('domcontentloaded');
-  const found = await page.getByText(ACCOUNT_NAME, { exact: false }).first()
+  const key = new RegExp(process.env.GHL_ACCOUNT_MATCH || 'Alquisalas', 'i');
+  const found = await page.getByText(key).first()
     .waitFor({ state: 'visible', timeout: 30000 }).then(() => true).catch(() => false);
   if (!found || !page.url().includes(LOCATION_ID)) {
     await shot(page, 'account-mismatch');

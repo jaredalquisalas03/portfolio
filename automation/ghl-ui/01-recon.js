@@ -9,14 +9,14 @@ const { BASE, LOCATION_ID, log, shot, withRetry, openSession, assertLoggedIn, as
     await withRetry('open dashboard', () => page.goto(dash, { waitUntil: 'domcontentloaded' }));
     await assertLoggedIn(page);
     await assertAccount(page);
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await shot(page, 'dashboard');
 
     const wf = `${BASE}/v2/location/${LOCATION_ID}/automation/workflows`;
     await withRetry('open workflows', () => page.goto(wf, { waitUntil: 'domcontentloaded' }));
     await assertLoggedIn(page);
     await page.getByText(/workflows/i).first().waitFor({ state: 'visible' });
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await shot(page, 'workflows-list');
 
     // Workflow list may render in the main page or inside an iframe. Try both.

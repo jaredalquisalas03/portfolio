@@ -7,7 +7,8 @@ const { BASE, LOCATION_ID, log, shot, withRetry, openSession, assertLoggedIn, as
 
 const NAME = 'WP | 01 Lead intake';
 const FORM = 'Primal Fitness Lead Capture';
-const PIPELINE_STAGE = 'New Lead';
+const PIPELINE = process.env.GHL_PIPELINE;           // required for step 7
+const PIPELINE_STAGE = process.env.GHL_STAGE || 'New Lead';
 const EMAIL_SUBJECT = 'Got your details, {{contact.first_name}}';
 const EMAIL_BODY = "Thanks for reaching out to Primal Fitness. We'll review your details and message you within 24 hours. Reply here if you have questions.";
 const SMS_BODY = "Hi {{contact.first_name}}, it's Primal Fitness. Thanks for signing up. Want to book a quick call?";
@@ -94,11 +95,12 @@ const steps = [
     await saveAction(page);
   }],
   ['Action: Create/Update Opportunity', async page => {
+    if (!PIPELINE) throw new Error('Set GHL_PIPELINE (exact pipeline name) and GHL_STAGE. Not guessing which pipeline to use.');
     await addActionPlus(page);
     await openDrawerAndPick(page, 'Create Or Update Opportunity');
     const s = await scope(page, x => x.getByText(/pipeline/i));
     await s.getByText(/select pipeline/i).first().click();
-    await s.getByRole('option').first().click();            // review the screenshot: pick your lead pipeline
+    await s.getByRole('option', { name: PIPELINE }).click();
     await s.getByText(/select stage/i).first().click();
     await s.getByRole('option', { name: PIPELINE_STAGE }).click();
     await saveAction(page);

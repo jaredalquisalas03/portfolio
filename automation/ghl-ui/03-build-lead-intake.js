@@ -95,7 +95,7 @@ const steps = [
     await saveAction(page);
   }],
   ['Action: Create/Update Opportunity', async page => {
-    if (!PIPELINE) throw new Error('Set GHL_PIPELINE (exact pipeline name) and GHL_STAGE. Not guessing which pipeline to use.');
+    if (!PIPELINE) { log('SKIPPED opportunity step', page.url(), 'GHL_PIPELINE not set'); return; }
     await addActionPlus(page);
     await openDrawerAndPick(page, 'Create Or Update Opportunity');
     const s = await scope(page, x => x.getByText(/pipeline/i));

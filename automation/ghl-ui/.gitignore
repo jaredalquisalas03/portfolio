@@ -1,0 +1,5 @@
+node_modules/
+ghl-session.json
+logs/
+screenshots/
+.env

@@ -1,0 +1,11 @@
+{
+  "name": "ghl-ui-automation",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "setup": "npm i && npx playwright install chromium",
+    "save-session": "node save-session.js",
+    "recon": "node 01-recon.js"
+  },
+  "dependencies": { "playwright": "^1.48.0" }
+}

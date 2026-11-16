@@ -37,6 +37,7 @@ function requireConfig() {
 
 async function open({ headless = process.env.HEADLESS !== '0' } = {}) {
   requireConfig();
+  console.log(`Starting browser (${headless ? 'hidden' : 'visible'}). Account: ${EXPECTED_ACCOUNT}`);
   const browser = await chromium.launch({ headless, slowMo: Number(process.env.SLOWMO || 200) });
   const context = await browser.newContext({
     storageState: SESSION,
@@ -69,10 +70,15 @@ async function assertLoggedIn(page) {
 async function go(page, urlPath, readyLocatorFn, label) {
   const url = APP + urlPath;
   await retryOnce(`goto ${label}`, async () => {
+    console.log(`Opening ${label}... (GHL can take up to a minute)`);
     await page.goto(url, { waitUntil: 'domcontentloaded' });
-    await page.waitForLoadState('networkidle').catch(() => {});
+    // GHL keeps sockets open, so "network idle" may never come. Cap the wait.
+    await page.waitForLoadState('networkidle', { timeout: 10_000 }).catch(() => {});
     await assertLoggedIn(page);
-    if (readyLocatorFn) await (await findAnywhere(page, readyLocatorFn)).waitFor({ state: 'visible' });
+    if (readyLocatorFn) {
+      console.log(`Waiting for ${label} to render...`);
+      await findAnywhere(page, readyLocatorFn);
+    }
   });
   log('navigate', url, 'ok');
   await shot(page, label);
@@ -95,8 +101,13 @@ async function findAnywhere(page, fn, { timeout = 20_000 } = {}) {
   const deadline = Date.now() + timeout;
   while (Date.now() < deadline) {
     for (const scope of [page, ...page.frames()]) {
-      const loc = fn(scope).first();
-      if (await loc.isVisible().catch(() => false)) return loc;
+      // Check several matches: GHL often has a hidden copy of the same text first.
+      const all = fn(scope);
+      const n = Math.min(await all.count().catch(() => 0), 10);
+      for (let i = 0; i < n; i++) {
+        const loc = all.nth(i);
+        if (await loc.isVisible().catch(() => false)) return loc;
+      }
     }
     await page.waitForTimeout(500); // short poll between frame scans, bounded by deadline
   }

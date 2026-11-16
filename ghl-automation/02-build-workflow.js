@@ -105,8 +105,19 @@ async function verifyPanel(page, expect, label) {
     await search.fill(spec.trigger.type);
     await g.safeClick(page, (s) => s.getByText(spec.trigger.type, { exact: true }), `pick trigger ${spec.trigger.type}`);
     for (const f of spec.trigger.filters || []) {
-      await g.safeClick(page, (s) => s.getByRole('button', { name: /add filters?/i }), 'add filter').catch(() => {});
-      await fillField(page, f);
+      await g.safeClick(page, (s) => s.getByText(/add filters?/i), 'add filter').catch(() => {});
+      if (f.filter) {
+        // GHL filter row: pick the filter type, then its value from a dropdown.
+        await g.safeClick(page, (s) => s.getByText(/select filters?/i).or(s.getByPlaceholder(/select filters?/i)), 'open filter type');
+        await g.safeClick(page, (s) => s.getByRole('option', { name: rx(f.filter) }).or(s.getByText(f.filter, { exact: true })), `filter ${f.filter}`);
+        await g.safeClick(page, (s) => s.getByText(/^select$/i).or(s.getByPlaceholder(/^select/i)), 'open filter value');
+        const typing = await g.findAnywhere(page, (s) => s.getByPlaceholder(/search|type/i), { timeout: 3000 }).catch(() => null);
+        if (typing) await typing.fill(f.value);
+        await g.safeClick(page, (s) => s.getByRole('option', { name: rx(f.value) }).or(s.getByText(f.value, { exact: true })), `value ${f.value}`);
+        g.log('trigger filter', page.url(), 'ok', { note: `${f.filter} = ${f.value}` });
+      } else {
+        await fillField(page, f);
+      }
     }
     await g.shot(page, 'trigger-configured');
     await g.safeClick(page, (s) => s.getByRole('button', { name: /save trigger/i }), 'save trigger');

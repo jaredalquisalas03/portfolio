@@ -1,0 +1,32 @@
+{
+  "name": "WP | 00 Test tag intake",
+  "allowReEntry": false,
+  "note": "Safe starter. Sends no messages. Fires only when the wp-test-intake tag is added.",
+  "trigger": {
+    "type": "Contact Tag",
+    "filters": [
+      { "filter": "Tag Added", "value": "wp-test-intake" }
+    ]
+  },
+  "actions": [
+    {
+      "type": "Add Contact Tag",
+      "fields": [{ "label": "Tags", "value": "wp-lead-new", "kind": "tag" }],
+      "expect": ["wp-lead-new"]
+    },
+    {
+      "type": "Add Task",
+      "note": "Internal task for you. The contact never sees it.",
+      "fields": [
+        { "label": "Title", "value": "Call new lead: {{contact.first_name}}", "kind": "text" }
+      ],
+      "expect": ["Call new lead"]
+    },
+    {
+      "type": "Add Contact Tag",
+      "note": "Sent-tag. Marks the contact as processed.",
+      "fields": [{ "label": "Tags", "value": "wp-intake-done", "kind": "tag" }],
+      "expect": ["wp-intake-done"]
+    }
+  ]
+}

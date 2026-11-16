@@ -8,6 +8,7 @@
     "setup": "npm install && npx playwright install chromium",
     "login": "node --env-file-if-exists=.env save-session.js",
     "check": "node --env-file-if-exists=.env 01-readonly-check.js",
+    "build:test": "node --env-file-if-exists=.env 02-build-workflow.js specs/wp-00-test-tag.json --step",
     "build": "node --env-file-if-exists=.env 02-build-workflow.js specs/wp-01-lead-intake.json"
   },
   "dependencies": {

@@ -6,7 +6,7 @@ Run it on your own computer. A cloud session has no screen for you to sign in.
 ## Setup (once)
 ```bash
 cd ghl-automation
-npm run setup          # installs Playwright + Chromium
+setup-windows.cmd      # Windows: installs Node, Playwright, Chromium (or: npm run setup)
 cp .env.example .env   # set GHL_LOCATION_ID and GHL_EXPECTED_ACCOUNT
 npm run login          # Chrome opens. YOU sign in + 2FA, then press Enter
 ```

@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="theme-color" content="#141211"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/styles.css"><title>GHL Lead List Cleaner | Jared</title><meta name="description" content="A Python tool built with Claude Code that turns messy lead CSVs into GoHighLevel-ready imports. Self-initiated build, tested on fake data."></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap bar"><a class="logo" href="../index.html">jared</a>
+<nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Menu">Menu</button>
+<ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Hire me</a></li></ul></nav></div></header>
+<main id="main"><section class="hero"><div class="wrap"><p><a href="../index.html#work">Back to work</a></p><h1>GHL Lead List Cleaner</h1>
+<p class="lead">A one-command tool that turns a messy lead spreadsheet into a clean GoHighLevel import file. Built with Claude Code.</p><dl class="meta"><dt>Client type</dt><dd>Clinics, coaches and the VAs and agencies who import their leads</dd><dt>Project type</dt><dd>Self-initiated tool, tested on fake lead lists (no real client data)</dd><dt>My role</dt><dd>Rules and requirements, AI-assisted build, testing, documentation</dd><dt>Built</dt><dd>Python script, cleaning rules for names, emails, PH/US/AU phones and sources, duplicate merging, rejected-rows report, 28 automated tests, VA guide and client checklist</dd><dt>Code</dt><dd><a href="https://github.com/jaredalquisalas03/ai-skill-development/tree/main/projects/01-ghl-lead-cleaner" target="_blank" rel="noopener">View the code on GitHub</a></dd></dl>
+<section class="wrap case">
+  <h2>The problem</h2>
+  <p>Clients hand over lead lists from Facebook Lead Ads, old spreadsheets and walk-in sign-ups. Importing them as-is breaks things in GHL:</p>
+  <ul>
+    <li><strong>SMS fails.</strong> Phones arrive in many formats, like <code>0917 000 1234</code>, <code>(310) 555-0123</code> and <code>0491 570 123</code>. GHL needs <code>+639170001234</code>.</li>
+    <li><strong>Leads get messaged twice.</strong> The same person fills in two forms and becomes two contacts.</li>
+    <li><strong>Emails look like spam.</strong> &ldquo;Hi dR. CaRLA&rdquo; kills trust in the first line.</li>
+    <li><strong>Reports break.</strong> One source spelled five ways (<code>facebook</code>, <code>FB ads</code>, <code>Facebook Ad</code>) hides which ad brings bookings.</li>
+  </ul>
+  <p>The 200-row test list had 181 badly formatted names, 18 phone formats, 13 spellings of the lead source, 20 duplicates and 10 rows with no contact details.</p>
+
+  <h2>The solution</h2>
+  <p>A VA puts the client&rsquo;s CSV in a folder and runs one command. The tool writes two files: a clean file ready for GHL, and a rejected file that explains every row it could not use.</p>
+  <figure>
+    <div class="shot">
+      <img class="zoomable" src="../assets/img/lead-cleaner/before-after.png" width="1200" height="718" alt="Six messy leads before cleaning and the same six leads after: names fixed, emails lowercased, phones in +country format, sources standardised" loading="lazy">
+    </div>
+    <figcaption>Real output from the tool on the fake dental clinic list. Click to enlarge.</figcaption>
+  </figure>
+
+  <h2>What it does</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Fix</th><th scope="col">What it does</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Names</strong></td><td>Trims spaces, fixes capitals, removes titles like &ldquo;Dr.&rdquo;, splits full name into first and last</td></tr>
+        <tr><td><strong>Emails</strong></td><td>Lowercases and checks format. Never auto-fixes typos, so mail never goes to a stranger</td></tr>
+        <tr><td><strong>Phones</strong></td><td>Converts Philippine, US and Australian numbers to the +country format GHL needs for SMS</td></tr>
+        <tr><td><strong>Sources and tags</strong></td><td>Standardises lead sources and adds the client&rsquo;s tags to every lead</td></tr>
+        <tr><td><strong>Duplicates</strong></td><td>Merges leads with the same email or phone. Blank fields are filled, and notes and tags are combined</td></tr>
+        <tr><td><strong>Headers</strong></td><td>Recognises common column names (<code>E-mail Address</code>, <code>Mobile</code>, <code>Contact No.</code>) and outputs GHL&rsquo;s import columns</td></tr>
+        <tr><td><strong>Report</strong></td><td>Prints a summary and saves a rejected file with a reason for each row</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Proof</h2>
+  <h3>1. One command, with tests passing</h3>
+  <p>The summary the tool prints after cleaning the 200-row list, followed by the automated test run.</p>
+  <figure class="fig-narrow">
+    <div class="shot">
+      <img class="zoomable" src="../assets/img/lead-cleaner/terminal-run.png" width="1200" height="525" alt="Terminal output: 200 rows in, 168 clean, 32 rejected, 20 duplicates merged; 28 tests ran, OK" loading="lazy">
+    </div>
+  </figure>
+
+  <h3>2. Nothing is silently dropped</h3>
+  <p>Every skipped row is listed with its reason. Duplicates are merged into the kept lead first, so details like &ldquo;EMERGENCY - tooth pain&rdquo; survive.</p>
+  <figure class="fig-narrow">
+    <div class="shot">
+      <img class="zoomable" src="../assets/img/lead-cleaner/rejected-file.png" width="1200" height="398" alt="Rejected file rows with reasons such as duplicate email merged into row 4, invalid email, and no email or phone" loading="lazy">
+    </div>
+  </figure>
+
+  <h3>3. A second test with a different client brief</h3>
+  <p>I ran a practice job for a fictional Australian physio clinic: 150 fake leads, different column names, and a client message with rules. Following those rules gave 125 clean leads, with 15 duplicates merged. The test also caught a real bug. The tool didn&rsquo;t recognise the <code>E-mail Address</code> header. I fixed it and added a test so it can&rsquo;t come back.</p>
+
+  <h3>4. The code is public</h3>
+  <ul>
+    <li><a href="https://github.com/jaredalquisalas03/ai-skill-development/blob/main/projects/01-ghl-lead-cleaner/CLAUDE.md" target="_blank" rel="noopener">CLAUDE.md</a>: the brief I wrote to guide the AI build.</li>
+    <li><a href="https://github.com/jaredalquisalas03/ai-skill-development/tree/main/projects/01-ghl-lead-cleaner/tests" target="_blank" rel="noopener">Tests</a>: every phone format, email rule and duplicate merge.</li>
+    <li><a href="https://github.com/jaredalquisalas03/ai-skill-development/blob/main/projects/01-ghl-lead-cleaner/CHECKLIST.md" target="_blank" rel="noopener">Client job checklist</a>: the steps I follow for each client list, including the GHL import.</li>
+  </ul>
+
+  <h2>Results</h2>
+  <div class="callout"><p><strong>Honesty note:</strong> These numbers come from fake test lists, not a live client. The run times are real timed runs.</p></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Metric</th><th scope="col">Dental test list</th><th scope="col">Physio practice job</th></tr></thead>
+      <tbody>
+        <tr><td>Rows in</td><td>200</td><td>150</td></tr>
+        <tr><td>Clean leads ready for GHL</td><td>168</td><td>125</td></tr>
+        <tr><td>Duplicates found and merged</td><td>20 of 20 planted</td><td>15 of 15 planted</td></tr>
+        <tr><td>Rows with no contact details caught</td><td>10 of 10 planted</td><td>8 of 8 planted</td></tr>
+        <tr><td>Time to clean</td><td>0.4 seconds</td><td>0.4 seconds</td></tr>
+        <tr><td>Automated tests</td><td colspan="2">28, all passing</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>My decisions and why</h2>
+  <ul>
+    <li><strong>Never guess a phone&rsquo;s country.</strong> <code>9170001234</code> could be Philippine or US. The VA sets the client&rsquo;s main country. A wrong guess sends SMS to the wrong person.</li>
+    <li><strong>Keep the lead, not just the row.</strong> A lead with a bad phone but a good email is kept. Throwing it away over a typo loses a potential booking.</li>
+    <li><strong>Merge duplicates instead of deleting them.</strong> The first copy isn&rsquo;t always the most complete. Merging keeps every phone, tag and note.</li>
+    <li><strong>Keep the clinic&rsquo;s notes.</strong> Notes like &ldquo;NDIS?&rdquo; or &ldquo;knee rehab after surgery&rdquo; go to a custom field in GHL. Front-desk staff need them.</li>
+    <li><strong>Built for VAs, not developers.</strong> One command, plain error messages, and a step-by-step guide.</li>
+    <li><strong>Privacy first.</strong> Client files are blocked from GitHub. Only fake data is public.</li>
+  </ul>
+
+  <h2>How I used AI</h2>
+  <div class="callout"><p><strong>Honesty note:</strong> Claude Code wrote most of the code. I set the rules, made the decisions and checked every output.</p></div>
+  <ul>
+    <li><strong>I wrote the brief first.</strong> A CLAUDE.md set the rules: Python and pandas only, beginner-friendly code, fake data only, and PH, US and AU phones.</li>
+    <li><strong>I built in small steps.</strong> Fake data first, then the cleaner, then tests, then docs. I reviewed each step before moving on.</li>
+    <li><strong>I made the judgment calls.</strong> Keeping notes, merging duplicates and not guessing phones were my decisions, based on how clinic follow-up works in GHL.</li>
+    <li><strong>I tested it like a client job.</strong> The practice job found a bug the first test list missed.</li>
+  </ul>
+
+  <h2>What this means for a clinic or coach</h2>
+  <ul>
+    <li>SMS reminders reach the patient, because every phone is in the right format.</li>
+    <li>No double messages, because duplicates are merged before import.</li>
+    <li>Accurate ad reports, because every source is spelled the same way.</li>
+    <li>Same-day imports, so the VA&rsquo;s time goes to follow-up, not spreadsheet cleanup.</li>
+  </ul>
+
+  <div class="btns"><a class="btn pri" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Book a 30-minute call</a><a class="btn" href="https://github.com/jaredalquisalas03/ai-skill-development/tree/main/projects/01-ghl-lead-cleaner" target="_blank" rel="noopener">View the code</a></div>
+</section>
+</div></section></main><footer><div class="wrap">Built by Jared on GitHub Pages.</div></footer><script src="../js/main.js"></script></body></html>

@@ -131,13 +131,33 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
 }
 
 .callout {
-  border-left: 3px solid var(--accent); background: var(--card);
+  border-left: 3px solid var(--rust); background: var(--panel);
   padding: 1rem 1.3rem; margin: 1.6rem 0; font-size: .92rem;
 }
 .callout p { margin: 0; }
-.callout strong { color: var(--accent); }
+.callout strong { color: var(--rust-l); }
 
 figure.chart { margin: 24px 0; }
 figure.chart img { display: block; width: 100%; max-width: 720px; height: auto; }
 figure.chart figcaption { margin-top: 8px; }
  
+
+
+/* ===== AI section, status chips, responsive fixes ===== */
+.status{display:inline-block;margin-top:12px;border:1px solid var(--rust);border-radius:999px;padding:2px 12px;font-size:.74rem;letter-spacing:.06em;color:var(--rust-l);background:var(--bg2)}
+.status.learning{border-color:var(--line);color:var(--mute)}
+.ai-tag{display:inline-block;border:1px solid var(--rust);border-radius:999px;padding:0 8px;font-size:.7rem;color:var(--rust-l);background:var(--panel);margin-right:4px}
+.ai-line{color:var(--mute);font-size:.85rem;margin:8px 0 0}
+.case ul{padding-left:20px}
+.case li{margin-bottom:6px}
+.case iframe{display:block;width:100%;max-width:720px;height:auto;aspect-ratio:16/9;border:0;border-radius:8px}
+.case .shot{flex-wrap:wrap;gap:12px}
+.case .shot img,.case figure>img{flex:1 1 220px;min-width:0;max-width:100%;height:auto;margin:0!important}
+.case figure{margin:16px 0}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0}
+.table-wrap table{border-collapse:collapse;width:100%;min-width:480px;font-size:.85rem}
+.table-wrap th,.table-wrap td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.table-wrap th{color:var(--rust-l)}
+.btn{text-align:center}
+@media(min-width:901px) and (max-width:1100px){.hero-photo{position:static!important;width:100%!important;max-width:420px;margin:32px 0 0!important}}
+@media(max-width:480px){.btns .btn{width:100%;justify-content:center}.chat-btn{min-height:44px}}

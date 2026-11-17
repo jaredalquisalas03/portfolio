@@ -29,7 +29,8 @@ const EMAIL = "pro.alquisalas.jared@gmail.com";
   /* ---- Assistant ---- */
   var FACTS = [
     [["service", "offer", "do you", "help"], "Jared sets up lead capture, booking and reminders, CRM pipelines, email and SMS, booking recovery, and review requests and reporting for coaches and clinics."],
-    [["tool", "software", "ghl", "gohighlevel", "make"], "Jared builds in GoHighLevel and uses Make and AI workflows for extra automation."],
+    [["tool", "software", "ghl", "gohighlevel", "make"], "Jared builds in GoHighLevel. He is learning Make and n8n for extra automation."],
+    [["ai", "claude", "prompt", "gcao", "chatbot"], "Jared uses AI to draft copy and strategy docs, then edits everything. Claude skills, the GCAO prompt framework, and an Obsidian second brain are skills he is building proof on."],
     [["process", "how", "work"], "The process is discover, map, build, then test and hand off with a recorded walkthrough. Async-first, with a weekly email update."],
     [["case", "project", "portfolio", "calmora", "primal", "bloom", "dental"], "Three case studies are on this site: Calmora Psychological Services, Primal Fitness Coaching, and Bloom Dental. See the Selected work section."],
     [["time", "zone", "hours", "async", "where"], "Jared is based in the Philippines and works async, with overlap for US and Australian clients by arrangement."],

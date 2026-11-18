@@ -4,7 +4,7 @@
 <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Menu">Menu</button>
 <ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Hire me</a></li></ul></nav></div></header>
 <main id="main"><section class="hero"><div class="wrap"><p><a href="../index.html#work">Back to work</a></p><h1>GHL Instant Lead Alert</h1>
-<p class="lead">A small web service that sends every new GoHighLevel lead to Discord. Urgent leads go to their own channel and ping the team. Built with Claude Code.</p><dl class="meta"><dt>Client type</dt><dd>Clinics, coaches and local service teams who follow up on form leads</dd><dt>Project type</dt><dd>Self-initiated build, tested with fake leads in a GHL test sub-account (no real client data)</dd><dt>My role</dt><dd>Requirements, scoring rules, AI-assisted build, GHL workflow setup, testing, deployment</dd><dt>Built</dt><dd>Python (Flask) webhook receiver, secret-key check, hot-lead scoring, Discord alerts for two channels, CSV lead log, error log with retry, GHL workflow, live deployment on Render</dd><dt>Code</dt><dd>Private GitHub repo. Walkthrough available on a call.</dd></dl>
+<p class="lead">A small web service that sends every new GoHighLevel lead to Discord within 5 seconds. Urgent leads go to their own channel and ping the team. Built with Claude Code.</p><dl class="meta"><dt>Client type</dt><dd>Clinics, coaches and local service teams who follow up on form leads</dd><dt>Project type</dt><dd>Self-initiated build, tested with fake leads in a GHL test sub-account (no real client data)</dd><dt>My role</dt><dd>Requirements, scoring rules, AI-assisted build, GHL workflow setup, testing, deployment</dd><dt>Built</dt><dd>Python (Flask) webhook receiver, secret-key check, hot-lead scoring, Discord alerts for two channels, CSV lead log, error log with retry, GHL workflow, live deployment on Render</dd><dt>Code</dt><dd>Private GitHub repo. Walkthrough available on a call.</dd></dl>
 <section class="wrap case">
   <h2>The problem</h2>
   <p>Speed to lead decides who gets the booking. But most small teams find out about new leads too late:</p>
@@ -58,14 +58,16 @@
   </figure>
 
   <h2>Results</h2>
-  <div class="callout"><p><strong>Honesty note:</strong> These are test results with fake leads in a test sub-account, not a live client. I haven&rsquo;t timed alert speed yet, so I don&rsquo;t quote a number.</p></div>
+  <div class="callout"><p><strong>Honesty note:</strong> These are test results with fake leads in a test sub-account, not a live client. I timed each alert by hand with a stopwatch, from clicking submit to the alert appearing in Discord.</p></div>
   <div class="table-wrap">
     <table>
       <thead><tr><th scope="col">Test</th><th scope="col">Result</th></tr></thead>
       <tbody>
         <tr><td>Local test with a fake hot lead</td><td>Posted to both channels. Hot card showed the reason.</td></tr>
         <tr><td>Real GHL form &rarr; local tunnel (ngrok)</td><td>Alert posted to #new-leads</td></tr>
-        <tr><td>Real GHL form &rarr; live service on Render</td><td>2 of 2 alerts posted to #new-leads</td></tr>
+        <tr><td>Speed test: 10 real GHL form submissions &rarr; live service on Render</td><td>10 of 10 alerts reached Discord</td></tr>
+        <tr><td>Average time from submit to alert</td><td>3.9 seconds</td></tr>
+        <tr><td>Fastest / slowest alert</td><td>2.6 seconds / 5.0 seconds</td></tr>
         <tr><td>Health check on the live service</td><td>200 OK</td></tr>
         <tr><td>Request with a wrong secret key</td><td>Rejected (401). Nothing sent to Discord.</td></tr>
         <tr><td>Secrets check before pushing to GitHub</td><td>No webhook URLs or keys in the code</td></tr>
@@ -103,7 +105,7 @@
 
   <h2>What this means for a clinic or coach</h2>
   <ul>
-    <li>The team sees new leads on their phones, not hours later in email.</li>
+    <li>The team sees new leads on their phones in seconds (3.9 on average in testing), not hours later in email.</li>
     <li>Urgent leads get called first.</li>
     <li>Faster replies mean more booked consults.</li>
     <li>Every lead is logged, even if a notification fails.</li>

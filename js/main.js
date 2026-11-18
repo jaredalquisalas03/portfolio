@@ -20,6 +20,8 @@ const EMAIL = "pro.alquisalas.jared@gmail.com";
   }
   var vid = document.getElementById("video");
   if (vid && VIDEO_EMBED_URL) {
+    var vidSection = document.getElementById("video-section");
+    if (vidSection) vidSection.hidden = false;
     vid.textContent = "";
     var v = document.createElement("iframe");
     v.src = VIDEO_EMBED_URL; v.title = "Walkthrough video"; v.loading = "lazy"; v.allowFullscreen = true;

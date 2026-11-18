@@ -29,8 +29,8 @@ const EMAIL = "pro.alquisalas.jared@gmail.com";
   /* ---- Assistant ---- */
   var FACTS = [
     [["service", "offer", "do you", "help"], "Jared sets up lead capture, booking and reminders, CRM pipelines, email and SMS, booking recovery, and review requests and reporting for coaches and clinics."],
-    [["tool", "software", "ghl", "gohighlevel", "make"], "Jared builds in GoHighLevel. He is learning Make and n8n for extra automation."],
-    [["ai", "claude", "prompt", "gcao", "chatbot"], "Jared uses AI to draft copy and strategy docs, then edits everything. He used Claude Code to build a lead list cleaner for GoHighLevel imports, and a live webhook service that sends new GHL leads to Discord with hot-lead alerts. Claude skills, the GCAO prompt framework, and an Obsidian second brain are skills he is building proof on."],
+    [["tool", "software", "ghl", "gohighlevel", "webhook", "integration"], "Jared builds in GoHighLevel. He connects it to other tools with webhooks and small Python services built with Claude Code."],
+    [["ai", "claude", "prompt", "gcao", "chatbot"], "Jared uses AI to draft copy and strategy docs, then edits everything. He used Claude Code to build a lead list cleaner for GoHighLevel imports, and a live webhook service that sends new GHL leads to Discord with hot-lead alerts. Claude skills and the GCAO prompt framework are skills he is building proof on."],
     [["process", "how", "work"], "The process is discover, map, build, then test and hand off with a recorded walkthrough. Async-first, with a weekly email update."],
     [["case", "project", "portfolio", "calmora", "primal", "bloom", "dental", "lead", "csv", "clean", "python", "discord", "alert", "webhook"], "Five case studies are on this site: Calmora Psychological Services, Primal Fitness Coaching, Bloom Dental, the GHL Lead List Cleaner, and the GHL Instant Lead Alert. The last two are tools built with Claude Code. See the Selected work section."],
     [["time", "zone", "hours", "async", "where"], "Jared is based in the Philippines and works async, with overlap for US and Australian clients by arrangement."],

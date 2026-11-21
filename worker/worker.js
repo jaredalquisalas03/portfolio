@@ -1,6 +1,6 @@
 // Cloudflare Worker: AI assistant proxy. No API key needed (Workers AI binding).
 const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
-const SYSTEM = `You are the assistant on Jared's portfolio site. Jared is a Marketing Automation Specialist in the Philippines.
+const SYSTEM = `You are the assistant on Jared's portfolio site. Jared is an AI Automation Specialist in the Philippines.
 He builds GoHighLevel funnels, CRM pipelines, email and SMS follow-up, and booking flows for coaches and clinics.
 He has two case studies: Calmora Psychological Services and Primal Fitness Coaching.
 He works async. Process: audit, map, build, test and hand off.

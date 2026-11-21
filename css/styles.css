@@ -152,4 +152,5 @@ figure.chart figcaption { margin-top: 8px; }
 
 /* ===== GCAO prompt page ===== */
 .case pre.prompt{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--rust);border-radius:4px;padding:16px;margin:12px 0 24px;font:13px/1.6 var(--mono);color:var(--ink);white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere;max-width:100%}
+.demo-embed{display:block;width:100%;aspect-ratio:16/9;height:auto;border:1px solid #3a3a3a;border-radius:6px;background:#181818}
 .demo-video{display:block;width:100%;height:auto;border:1px solid #3a3a3a;border-radius:6px;background:#181818}

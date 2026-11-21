@@ -102,7 +102,7 @@ const EMAIL = "pro.alquisalas.jared@gmail.com";
     for(var k=0;k<50;k++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.6+.6,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15});
     (function draw(){x.clearRect(0,0,w,h);
       p.forEach(function(d){d.x+=d.vx;d.y+=d.vy;if(d.x<0)d.x=w;if(d.x>w)d.x=0;if(d.y<0)d.y=h;if(d.y>h)d.y=0;
-        x.beginPath();x.arc(d.x,d.y,d.r,0,6.283);x.fillStyle="rgba(255,118,27,.35)";x.fill();});
+        x.beginPath();x.arc(d.x,d.y,d.r,0,6.283);x.fillStyle="rgba(245,175,0,.35)";x.fill();});
       requestAnimationFrame(draw);})();
   }
 })();

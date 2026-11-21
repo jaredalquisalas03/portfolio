@@ -1,8 +1,6 @@
 /* ===== EDIT THESE ===== */
 const GHL_CALENDAR_URL = "";   // paste your GHL calendar embed URL
 const VIDEO_EMBED_URL = "";    // e.g. https://www.youtube.com/embed/VIDEO_ID
-const CHAT_ENDPOINT = "";      // your Cloudflare Worker URL (see worker/README in README.md)
-const EMAIL = "pro.alquisalas.jared@gmail.com";
 /* ====================== */
 (function () {
   var btn = document.querySelector(".menu-btn"), menu = document.getElementById("menu");
@@ -27,63 +25,6 @@ const EMAIL = "pro.alquisalas.jared@gmail.com";
     v.src = VIDEO_EMBED_URL; v.title = "Walkthrough video"; v.loading = "lazy"; v.allowFullscreen = true;
     vid.appendChild(v);
   }
-
-  /* ---- Assistant ---- */
-  var FACTS = [
-    [["service", "offer", "do you", "help"], "Jared sets up lead capture, booking and reminders, CRM pipelines, email and SMS, booking recovery, and review requests and reporting for coaches and clinics."],
-    [["tool", "software", "ghl", "gohighlevel", "webhook", "integration"], "Jared builds in GoHighLevel. He connects it to other tools with webhooks and small Python services built with Claude Code."],
-    [["ai", "claude", "prompt", "gcao", "chatbot"], "Jared uses AI to draft copy and strategy docs, then edits everything. He used Claude Code to build a lead list cleaner for GoHighLevel imports, and a live webhook service that sends new GHL leads to Discord with hot-lead alerts. Claude skills and the GCAO prompt framework are skills he is building proof on."],
-    [["process", "how", "work"], "The process is discover, map, build, then test and hand off with a recorded walkthrough. Async-first, with a weekly email update."],
-    [["case", "project", "portfolio", "calmora", "primal", "bloom", "dental", "lead", "csv", "clean", "python", "discord", "alert", "webhook"], "Five case studies are on this site: Calmora Psychological Services, Primal Fitness Coaching, Bloom Dental, the GHL Lead List Cleaner, and the GHL Instant Lead Alert. The last two are tools built with Claude Code. See the Selected work section."],
-    [["time", "zone", "hours", "async", "where"], "Jared is based in the Philippines and works async, with overlap for US and Australian clients by arrangement."],
-    [["price", "cost", "rate", "quote", "how much"], "Pricing depends on scope. Book a call or email Jared for a quote."]
-  ];
-  var open = document.createElement("button");
-  open.className = "chat-btn"; open.type = "button"; open.textContent = "Ask my assistant";
-  open.setAttribute("aria-expanded", "false"); open.setAttribute("aria-controls", "chat");
-  var box = document.createElement("div");
-  box.className = "chat"; box.id = "chat"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Assistant");
-  box.innerHTML = '<h2>Ask about Jared\u2019s work</h2><div class="msgs" aria-live="polite"></div><div class="chips"></div><form><input type="text" maxlength="300" placeholder="Ask a question" aria-label="Your question"><button type="submit">Send</button></form>';
-  document.body.appendChild(open); document.body.appendChild(box);
-  var msgs = box.querySelector(".msgs"), input = box.querySelector("input"), chips = box.querySelector(".chips");
-  var history = [];
-
-  function add(text, who, link) {
-    var d = document.createElement("div"); d.className = "m " + who; d.textContent = text;
-    if (link) { d.appendChild(document.createTextNode(" ")); var a = document.createElement("a"); a.href = "#book"; a.textContent = "Book a call"; a.addEventListener("click", function () { box.classList.remove("open"); }); d.appendChild(a); }
-    msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
-  }
-  function local(q) {
-    q = q.toLowerCase();
-    for (var i = 0; i < FACTS.length; i++) for (var j = 0; j < FACTS[i][0].length; j++) if (q.indexOf(FACTS[i][0][j]) > -1) return FACTS[i][1];
-    return "I'm not sure about that. Book a call or email " + EMAIL + ".";
-  }
-  async function ask(q) {
-    add(q, "me"); history.push({ role: "user", content: q });
-    var a;
-    if (CHAT_ENDPOINT) {
-      try {
-        var r = await fetch(CHAT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history.slice(-6) }) });
-        var j = await r.json(); a = j.reply;
-      } catch (e) { a = null; }
-    }
-    if (!a) a = local(q);
-    history.push({ role: "assistant", content: a }); add(a, "bot", true);
-  }
-  ["What do you build?", "Which tools?", "How do you work?"].forEach(function (t) {
-    var b = document.createElement("button"); b.type = "button"; b.textContent = t;
-    b.addEventListener("click", function () { ask(t); }); chips.appendChild(b);
-  });
-  box.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault(); var q = input.value.trim(); if (!q) return; input.value = ""; ask(q);
-  });
-  function toggle(force) {
-    var o = typeof force === "boolean" ? force : !box.classList.contains("open");
-    box.classList.toggle("open", o); open.setAttribute("aria-expanded", String(o));
-    if (o) { if (!msgs.children.length) add("Hi, I answer questions about Jared\u2019s services and process.", "bot"); input.focus(); }
-  }
-  open.addEventListener("click", function () { toggle(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") toggle(false); });
 })();
 (function(){
   var rm=matchMedia("(prefers-reduced-motion: reduce)").matches;

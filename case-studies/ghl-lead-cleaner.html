@@ -1,11 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="theme-color" content="#1f1f1f"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/styles.css"><title>GHL Lead List Cleaner | Jared</title><meta name="description" content="A Python tool built with Claude Code that turns messy lead CSVs into GoHighLevel-ready imports. Self-initiated build, tested on fake data."></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="theme-color" content="#1f1f1f"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/styles.css"><title>GHL Lead List Cleaner | Jared</title><meta name="description" content="A Python tool built with Claude Code that turns messy lead CSVs into GoHighLevel-ready imports. Self-initiated build, tested on fake data."><meta property="og:type" content="article"><meta property="og:title" content="GHL Lead List Cleaner | Jared"><meta property="og:description" content="A Python tool built with Claude Code that turns messy lead CSVs into GoHighLevel-ready imports. Self-initiated build, tested on fake data."><meta property="og:url" content="https://jaredalquisalas03.github.io/portfolio/case-studies/ghl-lead-cleaner.html"><meta property="og:image" content="https://jaredalquisalas03.github.io/portfolio/assets/img/og.png"><meta name="twitter:card" content="summary_large_image"></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="wrap bar"><a class="logo" href="../index.html">jared</a>
 <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Menu">Menu</button>
-<ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Hire me</a></li></ul></nav></div></header>
+<ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#ai">AI</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Let’s map your funnel</a></li></ul></nav></div></header>
 <main id="main"><section class="hero"><div class="wrap"><p><a href="../index.html#work">Back to work</a></p><h1>GHL Lead List Cleaner</h1>
-<p class="lead">A one-command tool that turns a messy lead spreadsheet into a clean GoHighLevel import file. Built with Claude Code.</p><dl class="meta"><dt>Client type</dt><dd>Clinics, coaches and the VAs and agencies who import their leads</dd><dt>Project type</dt><dd>Self-initiated tool, tested on fake lead lists (no real client data)</dd><dt>Build time</dt><dd>About 2&ndash;3 hours, from brief to tested tool</dd><dt>My role</dt><dd>Rules and requirements, AI-assisted build, testing, documentation</dd><dt>Built</dt><dd>Python script, cleaning rules for names, emails, PH/US/AU phones and sources, duplicate merging, rejected-rows report, 28 automated tests, VA guide and client checklist</dd><dt>Code</dt><dd><a href="https://github.com/jaredalquisalas03/ai-skill-development/tree/main/projects/01-ghl-lead-cleaner" target="_blank" rel="noopener">View the code on GitHub</a></dd></dl>
-<section class="wrap case">
+<p class="lead">A one-command tool that turns a messy lead spreadsheet into a clean GoHighLevel import file. Built with Claude Code.</p><dl class="meta"><dt>Client type</dt><dd>Clinics, coaches and the VAs and agencies who import their leads</dd><dt>Project type</dt><dd>Self-initiated practice build, tested on fake lead lists (no real client data)</dd><dt>Build time</dt><dd>About 2&ndash;3 hours, from brief to tested tool</dd><dt>My role</dt><dd>Rules and requirements, AI-assisted build, testing, documentation</dd><dt>Built</dt><dd>Python script, cleaning rules for names, emails, PH/US/AU phones and sources, duplicate merging, rejected-rows report, 28 automated tests, VA guide and client checklist</dd><dt>Code</dt><dd><a href="https://github.com/jaredalquisalas03/ai-skill-development/tree/main/projects/01-ghl-lead-cleaner" target="_blank" rel="noopener">View the code on GitHub</a></dd></dl>
+<div class="results" aria-label="Key numbers"><div><b>0.4s</b><span>to clean a 200-row lead list</span></div><div><b>20 / 20</b><span>planted duplicates merged</span></div><div><b>28</b><span>automated tests passing</span></div><p class="results-note">Measured in testing with fake leads, not a live client</p></div>
+</div></section>
+<section class="case"><div class="wrap">
   <h2>The problem</h2>
   <p>Clients hand over lead lists from Facebook Lead Ads, old spreadsheets and walk-in sign-ups. Importing them as-is breaks things in GHL:</p>
   <ul>
@@ -20,7 +22,7 @@
   <p>A VA puts the client&rsquo;s CSV in a folder and runs one command. The tool writes two files: a clean file ready for GHL, and a rejected file that explains every row it could not use.</p>
   <figure>
     <div class="shot">
-      <img class="zoomable" src="../assets/img/lead-cleaner/before-after.png" width="1200" height="718" alt="Six messy leads before cleaning and the same six leads after: names fixed, emails lowercased, phones in +country format, sources standardised" loading="lazy">
+      <img width="2400" height="1436" class="zoomable" src="../assets/img/lead-cleaner/before-after.png" alt="Six messy leads before cleaning and the same six leads after: names fixed, emails lowercased, phones in +country format, sources standardised" loading="lazy">
     </div>
     <figcaption>Real output from the tool on the fake dental clinic list. Click to enlarge.</figcaption>
   </figure>
@@ -46,7 +48,7 @@
   <p>The summary the tool prints after cleaning the 200-row list, followed by the automated test run.</p>
   <figure class="fig-narrow">
     <div class="shot">
-      <img class="zoomable" src="../assets/img/lead-cleaner/terminal-run.png" width="1200" height="525" alt="Terminal output: 200 rows in, 168 clean, 32 rejected, 20 duplicates merged; 28 tests ran, OK" loading="lazy">
+      <img width="2400" height="1050" class="zoomable" src="../assets/img/lead-cleaner/terminal-run.png" alt="Terminal output: 200 rows in, 168 clean, 32 rejected, 20 duplicates merged; 28 tests ran, OK" loading="lazy">
     </div>
   </figure>
 
@@ -54,7 +56,7 @@
   <p>Every skipped row is listed with its reason. Duplicates are merged into the kept lead first, so details like &ldquo;EMERGENCY - tooth pain&rdquo; survive.</p>
   <figure class="fig-narrow">
     <div class="shot">
-      <img class="zoomable" src="../assets/img/lead-cleaner/rejected-file.png" width="1200" height="398" alt="Rejected file rows with reasons such as duplicate email merged into row 4, invalid email, and no email or phone" loading="lazy">
+      <img width="2400" height="796" class="zoomable" src="../assets/img/lead-cleaner/rejected-file.png" alt="Rejected file rows with reasons such as duplicate email merged into row 4, invalid email, and no email or phone" loading="lazy">
     </div>
   </figure>
 
@@ -111,6 +113,5 @@
     <li>Same-day imports, so the VA&rsquo;s time goes to follow-up, not spreadsheet cleanup.</li>
   </ul>
 
-  <div class="btns"><a class="btn pri" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Book a 30-minute call</a><a class="btn" href="https://github.com/jaredalquisalas03/ai-skill-development/tree/main/projects/01-ghl-lead-cleaner" target="_blank" rel="noopener">View the code</a></div>
-</section>
+  <div class="btns"><a class="btn pri" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Book a 30-minute discovery call</a><a class="btn" href="https://github.com/jaredalquisalas03/ai-skill-development/tree/main/projects/01-ghl-lead-cleaner" target="_blank" rel="noopener">View the code</a></div>
 </div></section></main><footer><div class="wrap">Built by Jared on GitHub Pages.</div></footer><script src="../js/main.js"></script></body></html>

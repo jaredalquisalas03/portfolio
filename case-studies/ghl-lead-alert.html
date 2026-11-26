@@ -1,11 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="theme-color" content="#1f1f1f"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/styles.css"><title>GHL Instant Lead Alert | Jared</title><meta name="description" content="A webhook service built with Claude Code that sends new GoHighLevel leads to Discord and routes hot leads to a priority channel. Self-initiated build, tested on fake leads."></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="theme-color" content="#1f1f1f"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/styles.css"><title>GHL Instant Lead Alert | Jared</title><meta name="description" content="A webhook service built with Claude Code that sends new GoHighLevel leads to Discord and routes hot leads to a priority channel. Self-initiated build, tested on fake leads."><meta property="og:type" content="article"><meta property="og:title" content="GHL Instant Lead Alert | Jared"><meta property="og:description" content="A webhook service built with Claude Code that sends new GoHighLevel leads to Discord and routes hot leads to a priority channel. Self-initiated build, tested on fake leads."><meta property="og:url" content="https://jaredalquisalas03.github.io/portfolio/case-studies/ghl-lead-alert.html"><meta property="og:image" content="https://jaredalquisalas03.github.io/portfolio/assets/img/og.png"><meta name="twitter:card" content="summary_large_image"></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="wrap bar"><a class="logo" href="../index.html">jared</a>
 <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Menu">Menu</button>
-<ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Hire me</a></li></ul></nav></div></header>
+<ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#ai">AI</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Let’s map your funnel</a></li></ul></nav></div></header>
 <main id="main"><section class="hero"><div class="wrap"><p><a href="../index.html#work">Back to work</a></p><h1>GHL Instant Lead Alert</h1>
-<p class="lead">A small web service that sends every new GoHighLevel lead to Discord within 5 seconds. Urgent leads go to their own channel and ping the team. Built with Claude Code.</p><dl class="meta"><dt>Client type</dt><dd>Clinics, coaches and local service teams who follow up on form leads</dd><dt>Project type</dt><dd>Self-initiated build, tested with fake leads in a GHL test sub-account (no real client data)</dd><dt>Build time</dt><dd>About 3&ndash;5 hours, from brief to live deployment</dd><dt>My role</dt><dd>Requirements, scoring rules, AI-assisted build, GHL workflow setup, testing, deployment</dd><dt>Built</dt><dd>Python (Flask) webhook receiver, secret-key check, hot-lead scoring, Discord alerts for two channels, CSV lead log, error log with retry, GHL workflow, live deployment on Render</dd><dt>Code</dt><dd>Private GitHub repo. Walkthrough available on a call.</dd></dl>
-<section class="wrap case">
+<p class="lead">A small web service that sends every new GoHighLevel lead to Discord within 5 seconds. Urgent leads go to their own channel and ping the team. Built with Claude Code.</p><dl class="meta"><dt>Client type</dt><dd>Clinics, coaches and local service teams who follow up on form leads</dd><dt>Project type</dt><dd>Self-initiated practice build, tested with fake leads in a GHL test sub-account (no real client data)</dd><dt>Build time</dt><dd>About 3&ndash;5 hours, from brief to live deployment</dd><dt>My role</dt><dd>Requirements, scoring rules, AI-assisted build, GHL workflow setup, testing, deployment</dd><dt>Built</dt><dd>Python (Flask) webhook receiver, secret-key check, hot-lead scoring, Discord alerts for two channels, CSV lead log, error log with retry, GHL workflow, live deployment on Render</dd><dt>Code</dt><dd>Private GitHub repo. Walkthrough available on a call.</dd></dl>
+<div class="results" aria-label="Key numbers"><div><b>10 / 10</b><span>test leads alerted in Discord</span></div><div><b>3.9s</b><span>average submit-to-alert time</span></div><div><b>401</b><span>wrong-key requests rejected</span></div><p class="results-note">Measured in testing with fake leads, not a live client</p></div>
+</div></section>
+<section class="case"><div class="wrap">
   <h2>The problem</h2>
   <p>Speed to lead decides who gets the booking. But most small teams find out about new leads too late:</p>
   <ul>
@@ -46,7 +48,7 @@
   <p>Trigger: Form Submitted. Action: Webhook (POST) to the live service on Render. The secret key is hidden.</p>
   <figure class="fig-narrow">
     <div class="shot">
-      <img class="zoomable" src="../assets/img/lead-alert/ghl-workflow.png" width="1276" height="654" alt="GHL workflow: Form Submitted trigger for Test Form, then a Webhook action posting to ghl-lead-alert.onrender.com" loading="lazy">
+      <img width="1276" height="654" class="zoomable" src="../assets/img/lead-alert/ghl-workflow.png" alt="GHL workflow: Form Submitted trigger for Test Form, then a Webhook action posting to ghl-lead-alert.onrender.com" loading="lazy">
     </div>
   </figure>
 
@@ -54,7 +56,7 @@
   <p>A fake implant enquiry. It lands in #hot-leads with an @here ping and shows why it&rsquo;s hot.</p>
   <figure class="fig-narrow">
     <div class="shot">
-      <img class="zoomable" src="../assets/img/lead-alert/discord-hot-lead.png" width="1432" height="823" alt="Discord #hot-leads: @here Hot lead, follow up now, with a red HOT Lead card for Jane Testlead, Dental Implants, and Why hot: Service Dental Implants" loading="lazy">
+      <img width="1432" height="823" class="zoomable" src="../assets/img/lead-alert/discord-hot-lead.png" alt="Discord #hot-leads: @here Hot lead, follow up now, with a red HOT Lead card for Jane Testlead, Dental Implants, and Why hot: Service Dental Implants" loading="lazy">
     </div>
   </figure>
 
@@ -62,7 +64,7 @@
   <p>The first card is the local test. The others are real GHL form submissions: one through a local tunnel, and two through the live service on Render. Test phones and emails are blurred.</p>
   <figure class="fig-narrow">
     <div class="shot">
-      <img class="zoomable" src="../assets/img/lead-alert/discord-new-leads.png" width="1554" height="857" alt="Discord #new-leads with four New Lead cards showing name, phone, email, service, source and submitted time" loading="lazy">
+      <img width="1554" height="857" class="zoomable" src="../assets/img/lead-alert/discord-new-leads.png" alt="Discord #new-leads with four New Lead cards showing name, phone, email, service, source and submitted time" loading="lazy">
     </div>
   </figure>
 
@@ -120,6 +122,5 @@
     <li>Every lead is logged, even if a notification fails.</li>
   </ul>
 
-  <div class="btns"><a class="btn pri" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Book a 30-minute call</a><a class="btn" href="../index.html#work">See more work</a></div>
-</section>
+  <div class="btns"><a class="btn pri" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Book a 30-minute discovery call</a><a class="btn" href="../index.html#work">See more work</a></div>
 </div></section></main><footer><div class="wrap">Built by Jared on GitHub Pages.</div></footer><script src="../js/main.js"></script></body></html>

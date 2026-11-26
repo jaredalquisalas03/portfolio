@@ -5,7 +5,7 @@
 <ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#ai">AI</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Let’s map your funnel</a></li></ul></nav></div></header>
 <main id="main"><section class="hero"><div class="wrap"><p><a href="../index.html#work">Back to work</a></p><h1>Calmora Psychological Services</h1>
 <p class="lead">A confidential, safety-first lead-to-consultation system: assessment, booking, reminders, crisis alert and an AI chat assistant.</p><dl class="meta"><dt>Client type</dt><dd>Psychological services clinic, Cebu City</dd><dt>Project type</dt><dd>Self-initiated practice build (not a paid client)</dd><dt>Build time</dt><dd>About 1 week: funnel, email and SMS copy, automations and testing</dd><dt>My role</dt><dd>Strategy, funnel design, copy, automation spec, build, AI chatbot, safety review</dd><dt>Tools</dt><dd>GoHighLevel (funnel pages, pipeline, workflows, calendars, Conversation AI, live chat widget), email and SMS</dd><dt>Built</dt><dd>Assessment funnel, crisis safety path, four calendars, nurture and no-show recovery workflows, AI chat assistant</dd></dl>
-<div class="results" aria-label="Key numbers"><div><b>72% &rarr; 80%</b><span>consult show-up target</span></div><div><b>23 &rarr; ~37</b><span>new clients per month target</span></div><div><b>1h / 24h / 72h</b><span>no-show recovery</span></div><div><b>&lt; 1 hour</b><span>crisis alert reply window</span></div><p class="results-note">Designed targets from a practice build, not live client results</p></div>
+<div class="results" aria-label="Key numbers"><div><b>72% &rarr; 80%</b><span>consult show-up target</span></div><div><b>23 &rarr; ~37</b><span>new clients per month target</span></div><div><b>1h / 24h / 72h</b><span>no-show recovery</span></div><div><b>AI chat</b><span>books and answers, never gives clinical advice</span></div><div><b>&lt; 1 hour</b><span>crisis alert reply window</span></div><p class="results-note">Designed targets from a practice build, not live client results</p></div>
 </div></section>
 <section class="case"><div class="wrap">
   <h2>The problem</h2>
@@ -103,19 +103,33 @@
     </div>
   </figure>
 
-  <h3>7. AI chat assistant (Conversation AI)</h3>
-  <p>A website chat assistant on the funnel pages that answers questions about fees, sessions, online versus clinic visits and privacy, and books consultations. I designed it around limits, not capabilities:</p>
-  <ul>
-    <li>It says it is an AI in its first message and replies in English, Tagalog or Bisaya.</li>
-    <li>It never diagnoses, gives coping or medication advice, interprets assessment scores, or promises outcomes.</li>
-    <li>It only states facts it was given. Anything else (address, hours, HMO, payment methods) is handed to the team instead of guessed.</li>
-    <li>A crisis message triggers a human handover, the safety reply with the hotline numbers, a task, and the same cal-crisis tag, so the clinician alert fires for chat crises as well.</li>
-    <li>I ran it in suggestive mode first, where staff approve every reply. I moved it to auto-pilot after testing fee questions, booking, an out-of-scope diagnosis question, a human request and crisis messages.</li>
-  </ul>
+  <h2>AI chat assistant</h2>
+  <p class="lead">A website chat assistant that books consultations and answers fact-based questions. It never gives clinical advice.</p>
+  <div class="ai-grid">
+    <div class="ai-card"><h3>What it does</h3><ul>
+      <li>Answers questions on fees, sessions, online versus clinic visits and privacy.</li>
+      <li>Books the 45-minute first consultation.</li>
+      <li>Says it is an AI in its first message. Replies in English, Tagalog or Bisaya.</li></ul></div>
+    <div class="ai-card"><h3>Its hard limits</h3><ul>
+      <li>Never diagnoses, gives coping or medication advice, interprets scores, or promises outcomes.</li>
+      <li>Only states facts it was given. Address, hours, HMO and payment questions go to the team.</li>
+      <li>A crisis message triggers a human handover, the hotline reply, a task and the cal-crisis tag. The clinician alert fires.</li></ul></div>
+    <div class="ai-card"><h3>How I rolled it out</h3><ul>
+      <li>Suggestive mode first: staff approved every reply.</li>
+      <li>Tested fee questions, booking, an out-of-scope diagnosis question, a human request and crisis messages.</li>
+      <li>Moved to auto-pilot only after those passed.</li></ul></div>
+  </div>
+  <div class="chat-mock" role="img" aria-label="Example chat: the assistant declines a diagnosis question and offers a consultation">
+    <p class="bot"><strong>Calmora Assistant (AI):</strong> Hi, I&rsquo;m an AI assistant. I can answer questions and help you book a consultation.</p>
+    <p class="user"><strong>Visitor:</strong> Do you think I have anxiety?</p>
+    <p class="bot"><strong>Calmora Assistant (AI):</strong> I can&rsquo;t diagnose or advise on that. A psychologist can, in a 45-minute first consultation. Want me to book one?</p>
+    <p class="mock-note">Illustrative example of the designed behavior, not a real transcript.</p>
+  </div>
   <div class="callout"><p><strong>Status check:</strong> Built and tested end to end with test contacts, including the crisis alert from both the form and the live chat.</p></div>
 
   <figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: AI chat assistant in the live chat widget: first message, booking flow and a crisis handover]</div></figure>
   <figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: Conversation AI settings: suggestive mode and the guardrail prompt]</div></figure>
+
 
   <h2>What I fixed in the audit pass</h2>
   <p>After the first build I audited my own work and fixed what a careful reviewer would find:</p>

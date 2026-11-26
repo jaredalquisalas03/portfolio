@@ -5,7 +5,7 @@
 <ul id="menu"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#ai">AI</a></li><li><a href="../index.html#process">Process</a></li><li><a href="../index.html#about">About</a></li><li><a class="cta" href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-booking-jared" target="_blank" rel="noopener">Let’s map your funnel</a></li></ul></nav></div></header>
 <main id="main"><section class="hero"><div class="wrap"><p><a href="../index.html#work">Back to work</a></p><h1>Lumora Aesthetics &amp; Wellness</h1>
 <p class="lead">An AI-assisted lead-to-consult system for a med spa: a quiz, an AI concierge on every channel, and workflows that follow up until the lead books.</p><dl class="meta"><dt>Client type</dt><dd>Med spa, Scottsdale, Arizona (fictional demo business, no real clients or patient data)</dd><dt>Project type</dt><dd>Self-initiated practice build (not a paid client)</dd><dt>Core offer</dt><dd>Free 30-minute Glow Consult, with the Glow Club membership ($129/month) as the retention offer</dd><dt>My role</dt><dd>Strategy, funnel and quiz build, AI agent setup and prompt, pipeline and CRM data design, all workflows, email copy, testing and audit</dd><dt>Tools</dt><dd>GoHighLevel (funnel with Custom HTML quiz, inbound webhook, workflows, Conversation AI, chat widget, calendars, opportunities, custom fields, knowledge base)</dd><dt>Built</dt><dd>Glow Plan quiz, Lumi AI concierge, 8-stage pipeline, seven workflows, calendar and email set</dd></dl>
-<div class="results" aria-label="Key numbers"><div><b>3 channels</b><span>Instagram, Facebook and web chat, one AI agent</span></div><div><b>7 workflows</b><span>intake, booking, recovery, review, handoff, follow-up</span></div><div><b>8 stages</b><span>one pipeline for every lead</span></div><div><b>8 fixes</b><span>found and fixed in my own audit pass</span></div><p class="results-note">A practice build tested with test contacts. No live client results</p></div>
+<div class="results" aria-label="Key numbers"><div><b>3 channels</b><span>Instagram, Facebook and web chat, one AI agent</span></div><div><b>7 workflows</b><span>intake, booking, recovery, review, handoff, follow-up</span></div><div><b>8 stages</b><span>one pipeline for every lead</span></div><div><b>AI chat</b><span>books consults, never gives medical advice</span></div><p class="results-note">A practice build tested with test contacts. No live client results</p></div>
 </div></section>
 <section class="case"><div class="wrap">
   <h2>The problem</h2>
@@ -94,20 +94,6 @@
   <p>A short pre-chat form (name and email) on the website widget turns every chat into a contact. GHL&rsquo;s default &ldquo;we&rsquo;re assigning you a person&rdquo; auto-reply is off, so Lumi answers first.</p>
 <figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: Lumi in the website chat widget: greeting, booking flow and a handover]</div></figure><figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: Conversation AI settings: prompt, knowledge base and channels]</div></figure>
   <div class="callout"><p><strong>Status check:</strong> Everything above is built and published. Tested with test contacts: booking, then LUM 04, then marked Showed, then LUM 06 (one run, no errors), and Lumi on the website chat. LUM 02 was tested with a sample webhook post. Not yet tested end to end: a real quiz submission through LUM 02 and LUM 08, the no-show path (LUM 05), and a live DM (LUM 01).</p></div>
-
-  <h2>What I fixed in the audit pass</h2>
-  <p>After the build, I ran test contacts through the system and read the execution logs.</p>
-  <ul>
-    <li><strong>Booking workflow ran three times for one contact.</strong> The &ldquo;Customer booked appointment&rdquo; trigger also fires on status changes. Marking a consult as Showed re-ran LUM 04 and tried to move the opportunity backward, which GHL blocked. I changed the trigger to appointment status = confirmed in the Glow Consult calendar only. A retest ran it once.</li>
-    <li><strong>Wrong opportunity names.</strong> Booked opportunities were named &ldquo;- DM&rdquo; even for quiz leads. Renamed to &ldquo;&lt;name&gt; - Consult&rdquo;.</li>
-    <li><strong>Glow Club offer went to everyone.</strong> Added a lum-client check so only clients get it.</li>
-    <li><strong>Lumi was not on the website chat.</strong> Added the Live chat channel, limited to the Lumora widget.</li>
-    <li><strong>Default chat auto-reply</strong> contradicted Lumi. Turned it off and enabled the pre-chat contact form.</li>
-    <li><strong>Lumi asked for names it already had.</strong> Updated the prompt to never ask for a name.</li>
-    <li><strong>Widget could not be saved.</strong> Agency branding blocked saving, so I turned it off.</li>
-    <li><strong>LUM 06 stage move was blocked.</strong> Enabled previous-stage moves so Showed can be set from any stage.</li>
-  </ul>
-<figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: Execution log showing the booking workflow running three times, before the fix]</div></figure>
 
   <h2>Designed targets</h2>
   <div class="callout"><p><strong>Honesty note:</strong> Lumora is fictional and the system has only been run with test contacts. There is no baseline data, so I have not set numbers yet. The value of this project is the working system and the decisions behind it.</p></div>

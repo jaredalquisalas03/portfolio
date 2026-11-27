@@ -21,7 +21,7 @@
 
   <h2>Walkthrough</h2>
   <p>A walkthrough video from quiz to booked consult and after-visit follow-up.</p>
-  <figure><div class="shot" data-placeholder="TODO: add walkthrough video">[Video placeholder: Lumora walkthrough link to be added]</div></figure>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/YwlRdVG3UIc" title="Lumora walkthrough video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
   <h2>The solution</h2>
   <p>I designed the system around one conversion point, the free Glow Consult. It has three ways in and one pipeline that tracks everything.</p>
@@ -31,7 +31,7 @@
     <li><strong>Follow-up with clear stop rules:</strong> every sequence ends when the lead books. Leads who never book are marked Cold instead of chased forever.</li>
     <li><strong>After-visit automation:</strong> thank-you, review request, rebooking, and a membership offer only for real clients.</li>
   </ul>
-<figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: System map: quiz, DMs and web chat into one pipeline, then booking, reminders, review and rebook]</div></figure>
+<figure><div class="shot"><img width="1344" height="876" src="../assets/img/lumora/system-map.png" alt="System map: Instagram, Messenger, web chat and the quiz page feed Lumi and the LUM 02 intake, then branch to consult booked, human handoff, not booked yet, showed and no-show" loading="lazy"></div><figcaption>System map: every channel ends in one calendar and one pipeline.</figcaption></figure>
 
   <h2>What I built</h2>
 
@@ -43,7 +43,7 @@
     <li><strong>First-timer FAQ:</strong> is the consult free, will I look overdone, location and hours, who will I see. The footer says quiz results are not medical advice.</li>
     <li><strong>Webhook to GHL:</strong> every answer, the score, temperature, consent, page URL and UTM parameters go to the intake workflow.</li>
   </ul>
-<figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: Glow Plan quiz: question step and personalized result]</div></figure>
+<figure><div class="shot"><img width="1528" height="905" src="../assets/img/lumora/landing-page.png" alt="Lumora Find your Glow Plan landing page with the Lumi chat widget" loading="lazy"><img width="991" height="862" src="../assets/img/lumora/quiz-result.png" alt="Personalized Glow Plan result with a book-my-free-consult button" loading="lazy"></div><figcaption>Quiz landing page with Lumi, and the personalized Glow Plan result.</figcaption></figure>
 
   <h3>2. Pipeline and CRM data</h3>
   <p>One pipeline with eight stages: New Lead, Engaged with Lumi, Consult Booked, Showed, Client, No-Show Recovery, Cold and Human Needed. Each opportunity is valued at $350, a typical first injectable visit.</p>
@@ -51,7 +51,7 @@
     <li><strong>Custom fields:</strong> Lead Channel, Treatment Interest, Injectable Experience, Start Timeline, Priority Factor, Upcoming Event, Lead Score, Lead Temperature and Chat Summary.</li>
     <li><strong>Tags:</strong> lum-dm-lead, lum-quiz-lead, lum-hot, lum-warm, lum-cold, lum-engaged, lum-booked, lum-no-show, lum-showed, lum-client, lum-human-needed and more.</li>
   </ul>
-<figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: LUM - Lumora Consult Pipeline with the eight stages]</div></figure>
+<figure><div class="shot"><img width="1852" height="407" src="../assets/img/lumora/pipeline.png" alt="LUM Lumora Consult Pipeline in GoHighLevel with stages from New Lead to Human Needed" loading="lazy"></div><figcaption>LUM - Lumora Consult Pipeline with test opportunities.</figcaption></figure>
 
   <h3>3. Seven workflows</h3>
   <div class="table-wrap"><table>
@@ -67,7 +67,7 @@
     </tbody>
   </table></div>
   <p>The numbering skips LUM 03.</p>
-<figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: LUM 02 Quiz Lead Intake workflow]</div></figure><figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: LUM 08 Unbooked Lead Follow-up workflow with the goal event]</div></figure>
+<figure><div class="shot"><img width="1868" height="687" src="../assets/img/lumora/workflow-quiz-intake.png" alt="LUM 02 Quiz Lead Intake workflow with Hot, Warm and Else branches" loading="lazy"></div><figcaption>LUM 02 Quiz Lead Intake: Hot, Warm and Cold branches.</figcaption></figure><figure><div class="shot" data-placeholder="TODO: add image">[Image placeholder: LUM 08 Unbooked Lead Follow-up workflow with the goal event]</div></figure>
 
   <h3>4. Calendar and emails</h3>
   <p>&ldquo;LUM - Free Glow Consult&rdquo; is a 30-minute calendar with automatic confirmation. All emails are in Lumora&rsquo;s voice: short, warm, one clear link, no pressure. They include the Glow Plan, hot-lead nudge, three nurture emails, three no-show emails, thank-you, review request, rebook and Glow Club invitation.</p>
